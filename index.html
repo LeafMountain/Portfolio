@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+    <meta charset="utf-8">
+    <title>Alexander Lövberg - Game Programmer</title>
+    <meta name="description" content="Portfolio of Alexander Lövberg, Game Programmer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://leafmountain.github.io/Website/img/logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg-color: #202020;
+            --secondary-bg-color: #171717;
+            --accent-color: #017e82;
+            --glass-color: rgba(255, 255, 255, 0.9);
+            --glass-color-dark: rgba(36, 36, 36, 0.9);
+            --text-color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(to bottom left, var(--accent-color), black);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            transition: color 0.2s ease-in-out;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: var(--glass-color-dark);
+            width: 100vw;
+            padding: 5px;
+            z-index: 100;
+            height: min-content;
+            overflow: hidden;
+        }
+
+        header #branding {
+            display: grid;
+            grid-template-areas: 'name logo title';
+            grid-template-columns: 1fr auto 1fr;
+            grid-gap: 10px;
+            align-items: center;
+            width: max-content;
+            margin: auto;
+            white-space: nowrap;
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 5px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        header a {
+            color: white;
+            --stroke-color: var(--glass-color-dark);
+            text-shadow:
+                -1px -1px 0 var(--stroke-color),
+                1px -1px 0 var(--stroke-color),
+                -1px 1px 0 var(--stroke-color),
+                1px 1px 0 var(--stroke-color);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        header #logo-img {
+            height: 50px;
+            width: auto;
+            grid-area: logo;
+            display: block;
+        }
+
+        header #name {
+            justify-self: end;
+            text-align: right;
+            grid-area: name;
+        }
+
+        header #title {
+            justify-self: start;
+            grid-area: title;
+        }
+
+        /* Content & Showcase */
+        content {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+        }
+
+        section.showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 100vh;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        section.showcase > a,
+        section.showcase > .card-container {
+            text-decoration: none;
+            height: 100%;
+            display: block;
+        }
+
+        .card {
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        .boxshadow {
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        section.showcase .overlay {
+            display: grid;
+            grid-template-columns: 1fr;
+            color: var(--text-color);
+            height: 100%;
+            background: var(--glass-color-dark);
+            padding: 10%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        section.showcase a:hover .overlay,
+        section.showcase .card-container:hover .overlay,
+        section.showcase .card:hover .overlay,
+        section.showcase .overlay:hover {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            transition: all 0.2s ease-in-out;
+        }
+
+        section.showcase .description {
+            display: grid;
+            height: min-content;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        section.showcase .logo-card {
+            width: auto;
+            height: 3cm;
+            justify-self: center;
+            margin-bottom: 10px;
+            animation: fadein 0.5s ease;
+        }
+
+        section.showcase .card-title {
+            padding: 10px;
+            align-self: center;
+            font-size: 1.8rem;
+            max-width: 100%;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0;
+        }
+
+        section.showcase p {
+            height: 7cm;
+            text-align: justify;
+            overflow: hidden;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding: 5px;
+            margin: 0 auto;
+        }
+
+        section.showcase center {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        section.showcase b {
+            font-size: 0.9rem;
+        }
+
+        .badge-unannounced {
+            display: inline-block;
+            background: rgba(111, 66, 193, 0.85);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-retired {
+            display: inline-block;
+            background: rgba(220, 53, 69, 0.85);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-school {
+            display: inline-block;
+            background: rgba(1, 126, 130, 0.85);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-released {
+            display: inline-block;
+            background: rgba(40, 167, 69, 0.85);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fadein {
+            animation: fadein 0.5s ease;
+        }
+
+        @media (max-width: 1081px) {
+            content {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            section.showcase {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: auto;
+                padding-top: 70px;
+            }
+
+            .card {
+                min-height: 480px;
+            }
+
+            section.showcase p {
+                height: auto;
+                max-height: none;
+                text-align: center;
+            }
+
+            header #branding {
+                grid-gap: 8px;
+            }
+
+            header h1 {
+                font-size: 1.1rem;
+            }
+
+            header #logo-img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="branding">
+            <a id="name" href="https://leafmountain.github.io/Website/other/me"><h1>Alexander Lövberg</h1></a>
+            <a id="logo" href="https://leafmountain.github.io/Website/index.html">
+                <img id="logo-img" src="https://leafmountain.github.io/Website/img/logo.png" alt="Logo">
+            </a>
+            <a id="title" href="https://leafmountain.github.io/Website/index.html"><h1 id="title">Game Programmer</h1></a>
+        </div>
+    </header>
+
+    <content>
+        <section class="showcase">
+            <a href="https://www.axolotgames.com/" target="_blank" rel="noopener noreferrer">
+                <div class="card boxshadow" style="background-image: url('https://cdn.sanity.io/images/zg6hcl71/production/c31f8e93105fa0580f37e728cc058ba47e443d76-2400x1254.jpg');">
+                    <div class="overlay">
+                        <div class="description fadein">
+                            <div style="height: 3cm; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                <span style="font-size: 3.5rem; font-weight: 700; letter-spacing: 6px; color: var(--text-color); opacity: 0.9;">???</span>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Cosmico (Unannounced)</h2>
+                            </div>
+                            <p><span class="badge-unannounced">In Development</span><br>An unannounced upcoming project in development with Cosmico and Axolot Games.<br><br>As a Gameplay and Tools Programmer, I am working on AI, UI, and general game systems, as well as game design of core systems.</p>
+                            <br>
+                            <center>
+                                <b>• C# • AI • UI • Game Design • Tools •</b>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://biomutant.com/" target="_blank" rel="noopener noreferrer">
+                <div class="card boxshadow" style="background-image: url('https://cdn.cloudflare.steamstatic.com/steam/apps/597820/library_600x900.jpg');">
+                    <div class="overlay">
+                        <div class="description fadein">
+                            <img class="logo-card" src="https://cdn.cloudflare.steamstatic.com/steam/apps/597820/logo.png" alt="Biomutant">
+                            <div>
+                                <h2 class="card-title">Biomutant</h2>
+                            </div>
+                            <p><span class="badge-released">Released Game</span><br>Biomutant is an open-world, post-apocalyptic Kung-Fu fable action-RPG developed by Experiment 101 and published by THQ Nordic.<br><br>As a Gameplay Programmer at Experiment 101, I worked on stabilizing the game, fixing bugs, and developing gameplay features.</p>
+                            <br>
+                            <center>
+                                <b>• C++ • Unreal Engine • Gameplay •</b>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="card-container">
+                <div class="card boxshadow" style="background-image: url('https://leafmountain.github.io/Website/img/DstnyHotline/cover.png'); cursor: default;">
+                    <div class="overlay">
+                        <div class="description fadein">
+                            <img class="logo-card" src="https://leafmountain.github.io/Website/img/DstnyHotline/logo.png" alt="Dstny Hotline">
+                            <div>
+                                <h2 class="card-title">Dstny Hotline</h2>
+                            </div>
+                            <p><span class="badge-retired">Project Retired</span><br>A Dating Game where you get the chance to meet your mystery date with different fun and exciting games. You simply activate your account by answering our "Quick Fire" questions and thru compatibility we will match you and your destiny partner.<br><br><i>Note: This project has been retired.</i></p>
+                            <br>
+                            <center>
+                                <b>• C# • Generalist • UX • iOS • Android •</b>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="archive.html">
+                <div class="card boxshadow" style="background-image: url('https://leafmountain.github.io/Website/img/ArcaneNomads/cover.png');">
+                    <div class="overlay">
+                        <div class="description fadein">
+                            <img class="logo-card" src="https://leafmountain.github.io/Website/img/Mini/logo.png" alt="Project Archive">
+                            <div>
+                                <h2 class="card-title">Project Archive</h2>
+                            </div>
+                            <p><span class="badge-school">School Projects</span><br>A collection of game development and experimental projects created during my education at Futuregames and Södertörn University.<br><br>Includes: Rest A-shored, The Good Few, Passion Projects, and Momentum.</p>
+                            <br>
+                            <center>
+                                <b>• School Projects • C++ • C# • Unity • Custom Engines •</b>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </content>
+</body>
+</html>
